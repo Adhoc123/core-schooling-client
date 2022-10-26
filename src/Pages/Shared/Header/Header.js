@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Button, Image } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -7,11 +7,16 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import img from '../../../assets/assets/logo.png';
 import DarkModeToggle from "react-dark-mode-toggle";
 import './Header.css';
-import { FaUser } from "react-icons/fa";
+import { FaUser, FaSignInAlt } from "react-icons/fa";
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import { Link, useNavigate } from 'react-router-dom';
+import './Header.css';
 
 const Header = () => {
+    const {user, logOut} = useContext(AuthContext);
     const [theme, setTheme] = useState('light');
     const [isDarkMode, setIsDarkMode] = useState(() => false);
+    const navigate = useNavigate();
     const toggleTheme = () => {
         if (theme === 'light') {
         setTheme('dark');
@@ -19,6 +24,16 @@ const Header = () => {
         setTheme('light');
         }
     };
+    const handleLogin = () =>{
+        navigate('/login');
+    }
+    const handleLogOut = () =>{
+         logOut()
+         .then(()=>{})
+         .catch(error =>{
+           console.error(error)
+         })
+    }
     useEffect(() => {
         document.body.className = theme;
     }, [theme]);
@@ -27,26 +42,16 @@ const Header = () => {
         //     <button onClick={toggleTheme}>Toggle Theme</button>
         //     <h1>Hello, world!</h1>
         // </div>
-        <Navbar collapseOnSelect className={theme} expand="lg"  variant="light">
+        <Navbar collapseOnSelect className={theme} expand="lg" bg='light'  variant="light">
       <Container>
         <Image src={img} roundedCircle style={{height:'95px'}}></Image>
         <Navbar.Brand href="#home" className='text-success fw-bold fs-1'>coreSchooling</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown>
+            
           </Nav>
-          <Nav>
+          <Nav >
             <Nav.Link href="#pricing">Courses</Nav.Link>
             <Nav.Link href="#features">Blog</Nav.Link>
             <Nav.Link href="#pricing">FAQ</Nav.Link>
@@ -57,11 +62,30 @@ const Header = () => {
             size={80}
             />
            </Nav.Link>
-            <Nav.Link href="#deets" >Login <FaUser></FaUser></Nav.Link>
+           {
+              user?.uid?
+              <>
+                <Nav.Link href="#features">{user?.displayName}</Nav.Link>
+                <Nav.Link eventKey={2} href="#memes"className='d-inline'>
+                    {
+                                user.photoURL?
+                                <Image src={user.photoURL} roundedCircle style={{height:'20px'}}></Image>
+                                :
+                                <FaUser></FaUser>
+                    }    
+                </Nav.Link>
+                <button className='logOut' onClick={handleLogOut}>Log Out</button>
+              </>
+               :
+               <Nav.Link onClick={handleLogin} ><FaSignInAlt/></Nav.Link> 
+           }
+           
+            {/* <Nav.Link onClick={handleLogin} ><FaSignInAlt/></Nav.Link> */}
           </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
+    
     );
 };
 

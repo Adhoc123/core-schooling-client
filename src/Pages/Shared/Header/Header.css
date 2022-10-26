@@ -1,8 +1,23 @@
 .dark {
     background-color: #333;
-    color: #fff;
+    color: white
   }
 .light {
-background-color: #fff;
-color: #333;
+background-color: rgb(249, 250, 255);
+color: black;
+}
+.text-color{
+  color: white;
+}
+
+.logOut{
+  height: 35px;
+  margin-top: 9px;
+  margin-left: 3px;
+  border-radius: 5px;
+  border: none;
+  background-color: cadetblue;
+  font-weight: bold;
+  color: white;
+ 
 }
