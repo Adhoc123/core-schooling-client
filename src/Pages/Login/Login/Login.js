@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
@@ -8,6 +8,7 @@ import { GoogleAuthProvider, GithubAuthProvider } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+    const [error, setError] = useState('');
     const {providerLogin, signIn} = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
@@ -24,10 +25,12 @@ const Login = () => {
         const user = result.user;
         console.log(user)
         form.reset();
+        setError('');
         navigate('/')
       })
       .catch((error) => {
         console.error(error)
+        setError(error.message)
       });
   }
     const handleGoogleSignIn = () =>{
@@ -70,11 +73,11 @@ const Login = () => {
           Login
         </Button>
         <Form.Text className="text-danger ms-3">
-            We'll never share your email with anyone else.
+           {error}
         </Form.Text>
         <ButtonGroup aria-label="Basic example" className='d-block mt-2 mx-auto'>
-         <Button onClick={handleGoogleSignIn} variant="outline-primary" className='me-4'><FaGoogle/></Button>
-         <Button onClick={handleGithubSignIn} variant="outline-danger"><FaGithub/></Button>
+            <Button onClick={handleGoogleSignIn} variant="outline-primary" className='me-4'><FaGoogle/></Button>
+            <Button onClick={handleGithubSignIn} variant="outline-danger"><FaGithub/></Button>
         </ButtonGroup>
         
       </Form>
