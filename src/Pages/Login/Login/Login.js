@@ -4,12 +4,13 @@ import Form from 'react-bootstrap/Form';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GoogleAuthProvider, GithubAuthProvider } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const {providerLogin, signIn} = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
     const navigate = useNavigate();
 
     const handleSubmit = event =>{
@@ -34,11 +35,23 @@ const Login = () => {
         .then((result) => {
             const user = result.user;
             console.log(user)
+            navigate('/')
           })
         .catch((error) => {
             console.error(error)
         });
     }
+    const handleGithubSignIn = () =>{
+      providerLogin(githubProvider)
+      .then((result) => {
+          const user = result.user;
+          console.log(user)
+          navigate('/')
+        })
+      .catch((error) => {
+          console.error(error)
+      });
+  }
     
     return (
       <Form onSubmit={handleSubmit}>
@@ -59,13 +72,13 @@ const Login = () => {
         <Form.Text className="text-danger ms-3">
             We'll never share your email with anyone else.
         </Form.Text>
-        
+        <ButtonGroup aria-label="Basic example" className='d-block mt-2 mx-auto'>
+         <Button onClick={handleGoogleSignIn} variant="outline-primary" className='me-4'><FaGoogle/></Button>
+         <Button onClick={handleGithubSignIn} variant="outline-danger"><FaGithub/></Button>
+        </ButtonGroup>
         
       </Form>
-      //   <ButtonGroup aria-label="Basic example" className='d-block mt-2 mx-auto'>
-      //   <Button onClick={handleGoogleSignIn} variant="outline-primary" className='me-4'><FaGoogle/></Button>
-      //   <Button variant="outline-danger"><FaGithub/></Button>
-      //  </ButtonGroup>
+      
       
     );
 };
