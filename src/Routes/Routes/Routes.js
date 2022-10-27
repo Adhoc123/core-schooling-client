@@ -6,6 +6,7 @@ import {
 import Main from "../../layout/Main";
 import Login from "../../Pages/Login/Login/Login";
 import Register from "../../Pages/Login/Register/Register";
+import TermsAndConditions from "../../Pages/Others/TermsAndConditions/TermsAndConditions";
 import RightNav from "../../Pages/Shared/RightNav/RightNav";
 
   export const router = createBrowserRouter([
@@ -24,7 +25,11 @@ import RightNav from "../../Pages/Shared/RightNav/RightNav";
         {
           path: "/register",
           element: <Register></Register>
-      }
+        },
+        {
+          path: "/terms",
+          element: <TermsAndConditions></TermsAndConditions>
+        }
       ]
     }
   ]);

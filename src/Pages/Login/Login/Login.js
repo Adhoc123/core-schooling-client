@@ -5,7 +5,7 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import { GoogleAuthProvider, GithubAuthProvider } from 'firebase/auth';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const [error, setError] = useState('');
@@ -79,8 +79,9 @@ const Login = () => {
             <Button onClick={handleGoogleSignIn} variant="outline-primary" className='me-4'><FaGoogle/></Button>
             <Button onClick={handleGithubSignIn} variant="outline-danger"><FaGithub/></Button>
         </ButtonGroup>
-        
+        <p>New to this site? Please <Link to='/register'>register</Link></p>
       </Form>
+      
       
       
     );

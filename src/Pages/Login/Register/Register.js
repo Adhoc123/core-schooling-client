@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import { Link } from 'react-router-dom';
 
 
 const Register = () => {
@@ -47,12 +48,17 @@ const Register = () => {
                 <Form.Label>Password</Form.Label>
                 <Form.Control name="password" type="password" placeholder="Password" required/>
                 </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                    <Form.Check type="checkbox" 
+                    label={<>Accept <Link to='/terms'>terms and conditions</Link></>}/>
+                </Form.Group>
                 <Button variant="primary" type="submit">
                 Register
                 </Button>
                 <Form.Text className="text-danger ms-3">
                 {error}
                 </Form.Text>
+                <p>Already have an account? Please <Link to='/login'>login</Link></p>
       </Form>
     );
 };
