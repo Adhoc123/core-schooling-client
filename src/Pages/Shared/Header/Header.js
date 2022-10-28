@@ -53,7 +53,7 @@ const Header = () => {
           <Nav >
             <Nav.Link><Link to='/contents' style={{ textDecoration: 'none', fontWeight:'bold', fontSize:'20px' }}>Contents</Link></Nav.Link>
             <Nav.Link><Link to='/blog' style={{ textDecoration: 'none', fontWeight:'bold', fontSize:'20px' }}>Blog</Link></Nav.Link>
-            <Nav.Link href="#pricing">FAQ</Nav.Link>
+            <Nav.Link><Link to='/faq' style={{ textDecoration: 'none', fontWeight:'bold', fontSize:'20px' }}>FAQ</Link></Nav.Link>
             <Nav.Link href="#pricing" onClick={toggleTheme}>
             <DarkModeToggle
             onChange={setIsDarkMode}
@@ -68,7 +68,7 @@ const Header = () => {
                 <Nav.Link eventKey={2} href="#memes"className='d-inline'>
                     {
                                 user.photoURL?
-                                <Image src={user.photoURL} roundedCircle style={{height:'20px'}}></Image>
+                                <Image src={user.photoURL} title={user?.displayName} roundedCircle style={{height:'20px'}}></Image>
                                 :
                                 <FaUser></FaUser>
                     }    

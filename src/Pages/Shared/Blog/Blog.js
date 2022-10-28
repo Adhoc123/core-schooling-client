@@ -25,12 +25,19 @@ const Blog = () => {
             <Accordion.Item eventKey="2">
                 <Accordion.Header><span className='fw-bold'>How does the private route work?</span></Accordion.Header>
                 <Accordion.Body>
-
+                PrivateRoute component is the blueprint for all private routes in the application. If the user is logged in, go on and display the component in question; otherwise, redirect the user to sign-in page. Additionally, we can define the logic of isLogin utility function separately in utils folder.
                 </Accordion.Body>
             </Accordion.Item>
             <Accordion.Item eventKey="3">
                 <Accordion.Header><span className='fw-bold'>What is Node? How does Node work?</span></Accordion.Header>
                 <Accordion.Body>
+                Node.js is an open source server environment, Node.js is free, Node.js runs on various platforms (Windows, Linux, Unix, Mac OS X, etc.), Node.js uses JavaScript on the server.
+                Sends the task to the computer's file system.
+Ready to handle the next request.
+When the file system has opened and read the file, the server returns the content to the client.
+Node.js eliminates the waiting, and simply continues with the next request.
+
+Node.js runs single-threaded, non-blocking, asynchronous programming, which is very memory efficient.
 
                 </Accordion.Body>
             </Accordion.Item>
