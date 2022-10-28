@@ -50,12 +50,12 @@ import Home from "../../Pages/Shared/Home/Home";
         {
           path: "/items/:id",
           element: <Topic></Topic>,
-          loader: ({params}) => fetch(`http://localhost:5000/items/${params.id}`)
+          loader: ({params}) => fetch(`https://core-schooling-server.vercel.app/items/${params.id}`)
         },
         {
           path: "/checkout/:id",
           element: <PrivateRoute><Checkout></Checkout></PrivateRoute>,
-          loader: ({params}) => fetch(`http://localhost:5000/items/${params.id}`)
+          loader: ({params}) => fetch(`https://core-schooling-server.vercel.app/items/${params.id}`)
         },
         {
           path: '*',

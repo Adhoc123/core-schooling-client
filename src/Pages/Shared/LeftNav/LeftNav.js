@@ -5,7 +5,7 @@ import Content from '../Content/Content';
 const LeftNav = () => {
     const [contents, setContents] = useState([]);
     useEffect(()=>{
-        fetch('http://localhost:5000/all-items')
+        fetch('https://core-schooling-server.vercel.app/all-items')
         .then(res => res.json())
         .then(data => setContents(data))
     },[])
