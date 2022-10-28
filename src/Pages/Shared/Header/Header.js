@@ -51,8 +51,8 @@ const Header = () => {
             
           </Nav>
           <Nav >
-            <Nav.Link><Link to='/contents'>Contents</Link></Nav.Link>
-            <Nav.Link href="#features">Blog</Nav.Link>
+            <Nav.Link><Link to='/contents' style={{ textDecoration: 'none', fontWeight:'bold', fontSize:'20px' }}>Contents</Link></Nav.Link>
+            <Nav.Link><Link to='/blog' style={{ textDecoration: 'none', fontWeight:'bold', fontSize:'20px' }}>Blog</Link></Nav.Link>
             <Nav.Link href="#pricing">FAQ</Nav.Link>
             <Nav.Link href="#pricing" onClick={toggleTheme}>
             <DarkModeToggle

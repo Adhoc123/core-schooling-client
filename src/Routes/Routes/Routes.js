@@ -14,6 +14,7 @@ import Contents from "../../Pages/Shared/Contents/Contents";
 import Topic from "../../Pages/Shared/Topic/Topic";
 import Checkout from "../../Pages/Shared/Checkout/Checkout";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import Blog from "../../Pages/Shared/Blog/Blog";
 
   export const router = createBrowserRouter([
     {
@@ -27,6 +28,10 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
         {
           path: "/register",
           element: <Register></Register>
+        },
+        {
+          path: "/blog",
+          element: <Blog></Blog>
         },
         {
           path: "/terms",
@@ -45,6 +50,10 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
           path: "/checkout/:id",
           element: <PrivateRoute><Checkout></Checkout></PrivateRoute>,
           loader: ({params}) => fetch(`http://localhost:5000/items/${params.id}`)
+        },
+        {
+          path: '*',
+          element: <h1 className="text-center fw-bold"><span className="text-danger">404</span> Page Not Found</h1>
         }
 
       ]
