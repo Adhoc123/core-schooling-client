@@ -15,12 +15,18 @@ import Topic from "../../Pages/Shared/Topic/Topic";
 import Checkout from "../../Pages/Shared/Checkout/Checkout";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Blog from "../../Pages/Shared/Blog/Blog";
+import Home from "../../Pages/Shared/Home/Home";
+
 
   export const router = createBrowserRouter([
     {
       path: "/",
       element: <Main></Main>,
       children: [
+        {
+          path: "/",
+          element: <Home></Home>
+        },
         {
             path: "/login",
             element: <Login></Login>

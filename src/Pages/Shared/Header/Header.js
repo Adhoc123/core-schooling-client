@@ -51,6 +51,7 @@ const Header = () => {
             
           </Nav>
           <Nav >
+            <Nav.Link><Link to='/' style={{ textDecoration: 'none', fontWeight:'bold', fontSize:'20px' }}>Home</Link></Nav.Link>
             <Nav.Link><Link to='/contents' style={{ textDecoration: 'none', fontWeight:'bold', fontSize:'20px' }}>Contents</Link></Nav.Link>
             <Nav.Link><Link to='/blog' style={{ textDecoration: 'none', fontWeight:'bold', fontSize:'20px' }}>Blog</Link></Nav.Link>
             <Nav.Link><Link to='/faq' style={{ textDecoration: 'none', fontWeight:'bold', fontSize:'20px' }}>FAQ</Link></Nav.Link>
