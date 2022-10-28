@@ -12,10 +12,7 @@ const Main = () => {
             <Header></Header>
             <Container fluid="md">
                 <Row>
-                    <Col lg='4'>
-                        <LeftNav></LeftNav>
-                    </Col>
-                    <Col lg='8'>
+                    <Col >
                         <Outlet></Outlet>
                     </Col>
                 </Row>

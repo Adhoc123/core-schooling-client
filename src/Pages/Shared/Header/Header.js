@@ -27,6 +27,9 @@ const Header = () => {
     const handleLogin = () =>{
         navigate('/login');
     }
+    const handleCourses = () =>{
+         navigate('/courses');
+    }
     const handleLogOut = () =>{
          logOut()
          .then(()=>{})
@@ -38,11 +41,7 @@ const Header = () => {
         document.body.className = theme;
     }, [theme]);
     return (
-        // <div className={theme}>
-        //     <button onClick={toggleTheme}>Toggle Theme</button>
-        //     <h1>Hello, world!</h1>
-        // </div>
-        <Navbar collapseOnSelect className={theme} expand="lg" bg='light'  variant="light">
+      <Navbar collapseOnSelect className={theme} expand="lg" bg='light'  variant="light">
       <Container>
         <Image src={img} roundedCircle style={{height:'95px'}}></Image>
         <Navbar.Brand href="#home" className='text-success fw-bold fs-1'>coreSchooling</Navbar.Brand>
@@ -52,7 +51,7 @@ const Header = () => {
             
           </Nav>
           <Nav >
-            <Nav.Link href="#pricing">Courses</Nav.Link>
+            <Nav.Link><Link to='/contents'>Contents</Link></Nav.Link>
             <Nav.Link href="#features">Blog</Nav.Link>
             <Nav.Link href="#pricing">FAQ</Nav.Link>
             <Nav.Link href="#pricing" onClick={toggleTheme}>
