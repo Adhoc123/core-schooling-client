@@ -13,6 +13,7 @@ import Content from "../../Pages/Shared/Content/Content";
 import Contents from "../../Pages/Shared/Contents/Contents";
 import Topic from "../../Pages/Shared/Topic/Topic";
 import Checkout from "../../Pages/Shared/Checkout/Checkout";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
   export const router = createBrowserRouter([
     {
@@ -42,7 +43,7 @@ import Checkout from "../../Pages/Shared/Checkout/Checkout";
         },
         {
           path: "/checkout/:id",
-          element: <Checkout></Checkout>,
+          element: <PrivateRoute><Checkout></Checkout></PrivateRoute>,
           loader: ({params}) => fetch(`http://localhost:5000/items/${params.id}`)
         }
 
